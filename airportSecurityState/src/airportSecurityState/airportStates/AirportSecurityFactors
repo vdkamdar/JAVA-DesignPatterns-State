@@ -1,0 +1,20 @@
+public class AirportSecurityFactors {
+    AirportStateI low_risk = null;
+    AirportStateI moderate_risk = null;
+    AirportStateI high_risk = null;
+    AirportStateI state = low_risk;
+
+    int number_of_travellers = 0;
+    int number_of_days = 0;
+    int number_of_prohibited_items = 0;
+    float average_traffic = 0;
+    float average_prohibited_items = 0;
+
+    public AirportSecurityFactors(int number_of_travellers, int number_of_days, int number_of_prohibited_items){
+	low_risk = new lowRiskState();
+	moderate_risk = new moderateRiskState();
+	high_risk = new highRiskState();
+	average_traffic = number_of_travellers / number_of_days;
+	average_prohibited_items = number_of_prohibited_items / number_of_days;
+    }
+}
