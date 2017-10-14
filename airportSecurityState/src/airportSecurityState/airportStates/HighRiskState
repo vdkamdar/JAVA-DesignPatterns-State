@@ -1,3 +1,5 @@
+package aiportSecurityState.airportStates;
+
 public class HighRiskState implements AirportStateI{
     private AirportSecurityFactors airportSecurityFactors = null;
     private float average_traffic = 0;
@@ -5,10 +7,9 @@ public class HighRiskState implements AirportStateI{
 
     public HighRiskState(AirportSecurityFactors airportSecurityFactors){
 	this.airportSecurityFactors = airportSecurityFactors;
+	average_traffic = airportSecurityFactors.getAverageTraffic();
+	average_prohibited_items = airportSecurityFactors.getAverageProhibitedItems();
     }
-
-    average_traffic = airportSecurityFactors.getAverageTraffic();
-    average_proibited_items = airportSecurityFactors.getAverageProhibitedItems();
     
     public void tightenOrLoosenSecurity(){
 	
