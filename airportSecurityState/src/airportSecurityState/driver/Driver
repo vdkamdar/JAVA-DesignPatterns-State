@@ -27,8 +27,14 @@ public class Driver{
 	FileProcessor fp_input = new FileProcessor(inputFile);
 
 	String line = null;
+	ArrayList<String[]> days = new ArrayList<String[]>();
+	String[] traveller_information = new String[4];
 	
 	while((line = fp_input.readLine()) != null){
+	    traveller_information = line.split(";");
+	    days.add(traveller_information);
 	}
+
+	results_orig.writeToFile();
     }
 }
