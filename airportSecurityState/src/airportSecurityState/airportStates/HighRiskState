@@ -1,0 +1,29 @@
+public class HighRiskState implements AirportStateI{
+    private AirportSecurityFactors airportSecurityFactors = null;
+    private float average_traffic = 0;
+    private float average_prohibited_items = 0;
+
+    public HighRiskState(AirportSecurityFactors airportSecurityFactors){
+	this.airportSecurityFactors = airportSecurityFactors;
+    }
+
+    average_traffic = airportSecurityFactors.getAverageTraffic();
+    average_proibited_items = airportSecurityFactors.getAverageProhibitedItems();
+    
+    public void tightenOrLoosenSecurity(){
+	
+	System.out.println("The airport is currently in high-risk state!");
+
+	if((0 <= average_traffic && average_traffic < 4) || (average_prohibited_items == 0)){
+	    airportSecurityFactors.setState(airportSecurityFactors.getLowRiskState());
+	}
+	
+	else if((4 <= average_traffic && average_traffic < 7) || (average_prohibited_items == 1)){
+	    airportSecurityFactors.setState(airportSecurityFactors.getModerateRiskState());
+	}
+
+	if(((0 <= average_traffic && average_traffic < 4) && (average_prohibited_items == 1)) || ((4 <= average_traffic && average_traffic < 8) && (average_prohibited_items == 0))){
+	    airportSecurityFactors.setState(airportSecurityFactors.getModerateRiskState());
+	}	
+    }
+}
