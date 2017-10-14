@@ -1,8 +1,10 @@
+package aiportSecurityState.airportStates;
+
 public class AirportSecurityFactors {
-    AirportStateI low_risk = null;
-    AirportStateI moderate_risk = null;
-    AirportStateI high_risk = null;
-    AirportStateI state = low_risk;
+    AirportStateI low_risk_state = null;
+    AirportStateI moderate_risk_state = null;
+    AirportStateI high_risk_state = null;
+    AirportStateI state = low_risk_state;
 
     int number_of_travellers = 0;
     int number_of_days = 0;
@@ -11,23 +13,35 @@ public class AirportSecurityFactors {
     float average_prohibited_items = 0;
 
     public AirportSecurityFactors(int number_of_travellers, int number_of_days, int number_of_prohibited_items){
-	low_risk = new lowRiskState(this);
-	moderate_risk = new moderateRiskState(this);
-	high_risk = new highRiskState(this);
+	low_risk_state = new LowRiskState(this);
+	moderate_risk_state = new ModerateRiskState(this);
+	high_risk_state = new HighRiskState(this);
 	average_traffic = number_of_travellers / number_of_days;
 	average_prohibited_items = number_of_prohibited_items / number_of_days;
     }
 
-    public LowRiskState getLowRiskState(){
-	return lowRiskState;
+    public AirportStateI getLowRiskState(){
+	return low_risk_state;
     }
 
-    public ModerateRiskState getModerateRiskState(){
-	return moderateRiskState;
+    public AirportStateI getModerateRiskState(){
+	return moderate_risk_state;
     }
 
-    public HighRiskState getHighRiskState(){
-	return highRiskState;
+    public AirportStateI getHighRiskState(){
+	return high_risk_state;
+    }
+
+    public float getAverageTraffic(){
+	return average_traffic;
+    }
+
+    public float getAverageProhibitedItems(){
+	return average_prohibited_items;
+    }
+
+    public void setState(AirportStateI state){
+	this.state = state;
     }
     
     public void tightenOrLoosenSecurity(){
