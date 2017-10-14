@@ -1,0 +1,32 @@
+package airportSecurityState.util;
+
+import java.util.ArrayList;
+import java.util.Array;
+
+public class Occurrences{
+
+    int current_day;
+    int number_of_days;
+    int number_of_travellers;
+    int number_of_prohibited_items;
+
+    public Occurrences(){
+	current_day = 0;
+	number_of_days = 0;
+	number_of_travellers = 0;
+	number_of_prohibited_items = 0;
+    }
+
+    public void calculateOccurrences(String[] traveller_information){
+	if(current_day != traveller_information[0]){
+	    current_day = traveller_information[0];
+	    number_of_days++;
+	}
+	
+	if(traveller_information[3] == "Gun" || traveller_information[3] == "NailCutter" || traveller_information[3] == "Blade" || traveller_information[3] == "Knife"){
+	    number_of_prohibited_items++;
+	}
+
+	number_of_travellers++;
+    }
+}
