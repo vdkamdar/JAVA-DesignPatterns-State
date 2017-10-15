@@ -1,9 +1,11 @@
-package aiportSecurityState.driver;
+package airportSecurityState.driver;
 
+import airportSecurityState.airportStates.AirportSecurityFactors;
+import airportSecurityState.util.FileProcessor;
+import airportSecurityState.util.Occurrences;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.RuntimeException;
-import airportSecurityState.util.FileProcessor;
 
 public class Driver{
     public static void main(String args[]) throws Exception{
@@ -27,15 +29,37 @@ public class Driver{
 	
 	FileProcessor fp_input = new FileProcessor(inputFile);
 
+	int index = 0;
 	String line = null;
 	ArrayList<String[]> travellers = new ArrayList<String[]>();
 	String[] traveller_information = new String[4];
-	Occurrences occurrences = new Occurrences(travellers);
-	
+	String[] temp = new String[3];
+	Occurrences occurrences = new Occurrences();
+	AirportSecurityFactors securityFactors = new AirportSecurityFactors(1,1,1);
+		
 	while((line = fp_input.readLine()) != null){
 	    traveller_information = line.split(";");
-	    travellers.add(traveller_information);
+	    
+	    
+	    temp = traveller_information[0].split(":");
+	    traveller_information[0] = temp[1];
 
+	    temp = traveller_information[1].split(":");
+	    traveller_information[1] = temp[1]+":"+temp[2];
+
+	    temp = traveller_information[2].split(":");
+	    traveller_information[2] = temp[1];
+
+	    temp = traveller_information[3].split(":");
+	    traveller_information[3] = temp[1];
+	    
+	    travellers.add(traveller_information);
+	    occurrences.calculateOccurrences(travellers.get(index));
+	    securityFactors.setNumberOfDays(occurrences.getNumberOfDays());
+	    securityFactors.setNumberOfProhibitedItems(occurrences.getNumberOfProhibitedItems());
+	    securityFactors.setNumberOfTravellers(occurrences.getNumberOfTravellers());
+	    securityFactors.tightenOrLoosenSecurity();
+	    index++;
 	}
 
 	//	results_orig.writeToFile();
