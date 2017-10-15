@@ -1,4 +1,4 @@
-package aiportSecurityState.airportStates;
+package airportSecurityState.airportStates;
 
 public class LowRiskState implements AirportStateI{
     private AirportSecurityFactors airportSecurityFactors = null;
@@ -7,24 +7,20 @@ public class LowRiskState implements AirportStateI{
 
     public LowRiskState(AirportSecurityFactors airportSecurityFactors){
 	this.airportSecurityFactors = airportSecurityFactors;
-	average_traffic = airportSecurityFactors.getAverageTraffic();
-	average_prohibited_items = airportSecurityFactors.getAverageProhibitedItems();
     }
     
     public void tightenOrLoosenSecurity(){
+
+	average_traffic = airportSecurityFactors.getAverageTraffic();
+	average_prohibited_items = airportSecurityFactors.getAverageProhibitedItems();
 	
-	System.out.println("The airport is currently in low-risk state!");
+		System.out.println("The airport is currently in low-risk state!");
+		System.out.println(average_traffic);
+		System.out.println(average_prohibited_items);
 	
-	if((4 <= average_traffic && average_traffic < 7) || (average_prohibited_items == 1)){
+	if((4 <= average_traffic && average_traffic < 8) || (1 <= average_prohibited_items && average_prohibited_items < 2)){
+	    System.out.println("Change to moderate risk state-1");
 	    airportSecurityFactors.setState(airportSecurityFactors.getModerateRiskState());
-	}
-
-	else if((average_traffic >= 8) || (average_prohibited_items >= 2)){
-	    airportSecurityFactors.setState(airportSecurityFactors.getHighRiskState());
-	}
-
-	if(((4 <= average_traffic && average_traffic < 7) && (average_prohibited_items >= 2)) || ((average_traffic >= 8) && (average_prohibited_items == 1))){
-	    airportSecurityFactors.setState(airportSecurityFactors.getHighRiskState());
 	}	
     }
 }
