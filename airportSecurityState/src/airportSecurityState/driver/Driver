@@ -3,6 +3,7 @@ package airportSecurityState.driver;
 import airportSecurityState.airportStates.AirportSecurityFactors;
 import airportSecurityState.util.FileProcessor;
 import airportSecurityState.util.Occurrences;
+import airportSecurityState.util.Results;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.RuntimeException;
@@ -36,10 +37,11 @@ public class Driver{
 	String[] temp = new String[3];
 	Occurrences occurrences = new Occurrences();
 	AirportSecurityFactors securityFactors = new AirportSecurityFactors(1,1,1);
+	Results results = new Results(outputFile);
+	results.initializeOperations();
 		
 	while((line = fp_input.readLine()) != null){
 	    traveller_information = line.split(";");
-	    
 	    
 	    temp = traveller_information[0].split(":");
 	    traveller_information[0] = temp[1];
@@ -59,9 +61,12 @@ public class Driver{
 	    securityFactors.setNumberOfProhibitedItems(occurrences.getNumberOfProhibitedItems());
 	    securityFactors.setNumberOfTravellers(occurrences.getNumberOfTravellers());
 	    securityFactors.tightenOrLoosenSecurity();
+
+	    results.resultOperations(securityFactors);
 	    index++;
 	}
 
-	//	results_orig.writeToFile();
+	results.writeToFile();
+	results.writeToStdout();
     }
 }
