@@ -9,7 +9,7 @@
   <target name="all" depends="compile_all"/>
 
   <target name="compile_all"
-          depends="studentCoursesBackup"/>
+          depends="airportSecurityState"/>
 
   <target name="clean">
        <delete dir="${BUILD}"/>
