@@ -20,6 +20,8 @@ public class LowRiskState implements AirportStateI{
 	
 	if((4 <= average_traffic && average_traffic < 8) || (1 <= average_prohibited_items && average_prohibited_items < 2)){
 	    System.out.println("Change to moderate risk state-1");
+	    airportSecurityFactors.setCurrentState("moderate_risk_state");
+	    
 	    airportSecurityFactors.setState(airportSecurityFactors.getModerateRiskState());
 	}	
     }
