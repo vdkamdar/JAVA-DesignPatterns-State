@@ -2,14 +2,23 @@ package airportSecurityState.util;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import airportSecurityState.airportStates.AirportSecurityFactors;
 
 public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 
+    private int[] operations = new int[10];
     private String outputFile;
     private ArrayList<String> outputFileResults = new ArrayList<String>();
 
     public Results(String outputFile){
 	this.outputFile = outputFile;
+    }
+
+    public void initializeOperations(){
+	for(int i=0; i<10; i++){
+	    operations[i] = i+1;
+	}
     }
     
     public void writeToFile(){
@@ -21,7 +30,6 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 	    e.printStackTrace();
 	    System.exit(0);
 	}
-	//	tree.printNodes(current_node, outputFileResults);
 	
 	for(int i=0; i<outputFileResults.size(); i++){
 	    pw.println(outputFileResults.get(i));
@@ -30,9 +38,24 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
     }
 
     public void writeToStdout(){
-	//	tree.printNodes(current_node, outputFileResults);
 	for(int i=0; i<outputFileResults.size(); i++){
 	    System.out.println(outputFileResults.get(i));
+	}
+    }
+
+    public void resultOperations(AirportSecurityFactors airportSecurityFactors){
+	String current_state = airportSecurityFactors.getCurrentState();
+	
+	if(current_state.equals("low_risk_state")){
+	    outputFileResults.add(Integer.toString(operations[0])+" "+Integer.toString(operations[2])+" "+Integer.toString(operations[4])+" "+Integer.toString(operations[6])+" "+Integer.toString(operations[8]));
+	}
+
+	else if(current_state.equals("moderate_risk_state")){
+	    outputFileResults.add(Integer.toString(operations[1])+" "+Integer.toString(operations[2])+" "+Integer.toString(operations[4])+" "+Integer.toString(operations[7])+" "+Integer.toString(operations[8]));
+	}
+
+	else if(current_state.equals("high_risk_state")){
+	    outputFileResults.add(Integer.toString(operations[1])+" "+Integer.toString(operations[3])+" "+Integer.toString(operations[5])+" "+Integer.toString(operations[7])+" "+Integer.toString(operations[9]));
 	}
     }
 }
