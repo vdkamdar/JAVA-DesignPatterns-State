@@ -73,6 +73,5 @@ public class Driver{
 	}
 	
 	results.writeToFile();
-	results.writeToStdout();
     }
 }
