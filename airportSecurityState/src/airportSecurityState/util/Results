@@ -13,8 +13,10 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 
     public Results(String outputFile){
 	this.outputFile = outputFile;
+	MyLogger.writeMessage("Results instance is created", MyLogger.DebugLevel.CONSTRUCTOR);
     }
 
+    
     public void initializeOperations(){
 	for(int i=0; i<10; i++){
 	    operations[i] = i+1;
