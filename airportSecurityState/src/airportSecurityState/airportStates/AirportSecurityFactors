@@ -1,5 +1,7 @@
 package airportSecurityState.airportStates;
 
+import airportSecurityState.util.MyLogger;
+
 public class AirportSecurityFactors {
     AirportStateI low_risk_state = null;
     AirportStateI moderate_risk_state = null;
@@ -19,6 +21,7 @@ public class AirportSecurityFactors {
 	moderate_risk_state = new ModerateRiskState(this);
 	high_risk_state = new HighRiskState(this);
 	state = low_risk_state;
+	MyLogger.writeMessage("AirportSecurityFactors instance is created", MyLogger.DebugLevel.CONSTRUCTOR);	
     }
 
     public String getCurrentState(){
