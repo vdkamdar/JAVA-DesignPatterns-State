@@ -32,7 +32,7 @@ public class Occurrences{
 
 	number_of_travellers++;
 
-		System.out.println("Days: "+number_of_days+"; ProhibitedItems: "+number_of_prohibited_items+"; Travellers: "+number_of_travellers);
+	MyLogger.writeMessage(("Days: "+number_of_days+"; ProhibitedItems: "+number_of_prohibited_items+"; Travellers: "+number_of_travellers), MyLogger.DebugLevel.FROM_RESULTS);
     }
 
     public int getNumberOfDays(){
