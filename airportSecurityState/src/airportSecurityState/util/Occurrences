@@ -2,6 +2,8 @@ package airportSecurityState.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import airportSecurityState.util.MyLogger;
+
 
 public class Occurrences{
 
@@ -15,6 +17,7 @@ public class Occurrences{
 	number_of_days = 0;
 	number_of_travellers = 0;
 	number_of_prohibited_items = 0;
+	MyLogger.writeMessage("Occurrences instance is created", MyLogger.DebugLevel.CONSTRUCTOR);
     }
 
     public void calculateOccurrences(String[] traveller_information){
