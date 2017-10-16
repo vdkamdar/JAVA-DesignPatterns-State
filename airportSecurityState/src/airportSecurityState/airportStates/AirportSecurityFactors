@@ -3,18 +3,18 @@ package airportSecurityState.airportStates;
 import airportSecurityState.util.MyLogger;
 
 public class AirportSecurityFactors {
-    AirportStateI low_risk_state = null;
-    AirportStateI moderate_risk_state = null;
-    AirportStateI high_risk_state = null;
-    AirportStateI state = null;
+    private AirportStateI low_risk_state = null;
+    private AirportStateI moderate_risk_state = null;
+    private AirportStateI high_risk_state = null;
+    private AirportStateI state = null;
 
-    String current_state = "low_risk_state";
+    private String current_state = "low_risk_state";
    
-    int number_of_days = 1;
-    int number_of_prohibited_items = 0;
-    int number_of_travellers = 0;
-    float average_traffic = 0;
-    float average_prohibited_items = 0;
+    private int number_of_days = 1;
+    private int number_of_prohibited_items = 0;
+    private int number_of_travellers = 0;
+    private float average_traffic = 0;
+    private float average_prohibited_items = 0;
 
     public AirportSecurityFactors(int number_of_travellers, int number_of_days, int number_of_prohibited_items){
 	low_risk_state = new LowRiskState(this);
