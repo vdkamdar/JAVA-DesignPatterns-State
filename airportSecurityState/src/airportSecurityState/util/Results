@@ -15,15 +15,16 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 	this.outputFile = outputFile;
 	MyLogger.writeMessage("Results instance is created", MyLogger.DebugLevel.CONSTRUCTOR);
     }
-
     
     public void initializeOperations(){
+	MyLogger.writeMessage("OperationsID[1-10] Array is initialized", MyLogger.DebugLevel.IN_RESULTS);
 	for(int i=0; i<10; i++){
 	    operations[i] = i+1;
 	}
     }
     
     public void writeToFile(){
+	MyLogger.writeMessage("Results are being written to the File", MyLogger.DebugLevel.FROM_RESULTS);
 	PrintWriter pw = null;
 	try{
 	    pw = new PrintWriter(this.outputFile);
@@ -40,6 +41,7 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
     }
 
     public void writeToStdout(){
+	MyLogger.writeMessage("Results are being written to the Stdout", MyLogger.DebugLevel.FROM_RESULTS);
 	for(int i=0; i<outputFileResults.size(); i++){
 	    System.out.println(outputFileResults.get(i));
 	}
@@ -49,14 +51,17 @@ public class Results implements FileDisplayInterface, StdoutDisplayInterface{
 	String current_state = airportSecurityFactors.getCurrentState();
 	
 	if(current_state.equals("low_risk_state")){
+	    MyLogger.writeMessage("Current state is LowRiskState", MyLogger.DebugLevel.IN_RESULTS);
 	    outputFileResults.add(Integer.toString(operations[0])+" "+Integer.toString(operations[2])+" "+Integer.toString(operations[4])+" "+Integer.toString(operations[6])+" "+Integer.toString(operations[8]));
 	}
 
 	else if(current_state.equals("moderate_risk_state")){
+	    MyLogger.writeMessage("Current state is ModeratewRiskState", MyLogger.DebugLevel.IN_RESULTS);
 	    outputFileResults.add(Integer.toString(operations[1])+" "+Integer.toString(operations[2])+" "+Integer.toString(operations[4])+" "+Integer.toString(operations[7])+" "+Integer.toString(operations[8]));
 	}
 
 	else if(current_state.equals("high_risk_state")){
+	    MyLogger.writeMessage("Current state is HighRiskState", MyLogger.DebugLevel.IN_RESULTS);
 	    outputFileResults.add(Integer.toString(operations[1])+" "+Integer.toString(operations[3])+" "+Integer.toString(operations[5])+" "+Integer.toString(operations[7])+" "+Integer.toString(operations[9]));
 	}
     }
