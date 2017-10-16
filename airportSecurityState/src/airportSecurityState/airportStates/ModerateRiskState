@@ -1,5 +1,7 @@
 package airportSecurityState.airportStates;
 
+import airportSecurityState.util.MyLogger;
+
 public class ModerateRiskState implements AirportStateI{
     private AirportSecurityFactors airportSecurityFactors = null;
     private float average_traffic = 0;
@@ -7,6 +9,7 @@ public class ModerateRiskState implements AirportStateI{
 
     public ModerateRiskState(AirportSecurityFactors airportSecurityFactors){
 	this.airportSecurityFactors = airportSecurityFactors;	 
+	MyLogger.writeMessage("ModerateRiskState instance is created", MyLogger.DebugLevel.CONSTRUCTOR);
     }
     
     public void tightenOrLoosenSecurity(){
@@ -16,11 +19,11 @@ public class ModerateRiskState implements AirportStateI{
 	
 	System.out.println("The airport is currently in moderate-risk state!");
 
-	System.out.println(average_traffic);
-		System.out.println(average_prohibited_items);
+	System.out.println("AverageTraffic: "+average_traffic);
+	System.out.println("AverageProhibitedItems: "+average_prohibited_items);
 	
-		if((0 <= average_traffic && average_traffic < 4) && (0 <= average_prohibited_items && average_prohibited_items < 1)){
-	    	    System.out.println("Change to low risk state-1");
+	if((0 <= average_traffic && average_traffic < 4) && (0 <= average_prohibited_items && average_prohibited_items < 1)){
+	   	    System.out.println("Change to low risk state-1");
 		    airportSecurityFactors.setCurrentState("low_risk_state");
 
 	    airportSecurityFactors.setState(airportSecurityFactors.getLowRiskState());
