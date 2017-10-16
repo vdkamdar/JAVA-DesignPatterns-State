@@ -4,19 +4,23 @@ import airportSecurityState.airportStates.AirportSecurityFactors;
 import airportSecurityState.util.FileProcessor;
 import airportSecurityState.util.Occurrences;
 import airportSecurityState.util.Results;
+import airportSecurityState.util.MyLogger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.lang.RuntimeException;
+import java.lang.NumberFormatException;
 
 public class Driver{
     public static void main(String args[]) throws Exception{
 	String inputFile = null;
 	String outputFile = null;
+	int debugLevel = 0;
 	
 	try{
-	    if(args.length == 2){
+	    if(args.length == 3){
 		inputFile = args[0];
 		outputFile = args[1];
+		debugLevel = Integer.parseInt(args[2]);
 	    }
 	    else{
 		throw new RuntimeException();
@@ -27,6 +31,8 @@ public class Driver{
 	    e.printStackTrace();
 	    System.exit(0);
 	}
+
+	MyLogger.setDebugValue(debugLevel);
 	
 	FileProcessor fp_input = new FileProcessor(inputFile);
 
@@ -65,7 +71,7 @@ public class Driver{
 	    results.resultOperations(securityFactors);
 	    index++;
 	}
-
+	
 	results.writeToFile();
 	results.writeToStdout();
     }
