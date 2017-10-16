@@ -16,13 +16,12 @@ public class HighRiskState implements AirportStateI{
 
 	average_traffic = airportSecurityFactors.getAverageTraffic();
 	average_prohibited_items = airportSecurityFactors.getAverageProhibitedItems();
-	System.out.println("The airport is currently in high-risk state!");
-	System.out.println("AverageTraffic: "+average_traffic);
-	System.out.println("AverageProhibitedItems: "+average_prohibited_items);
+	//	System.out.println("AverageTraffic: "+average_traffic);
+	//System.out.println("AverageProhibitedItems: "+average_prohibited_items);
 	
 	if(((0 <= average_traffic && average_traffic < 4) && (1 <= average_prohibited_items && average_prohibited_items < 2)) || ((4 <= average_traffic && average_traffic < 8) && (0 <= average_prohibited_items && average_prohibited_items < 1)) || (4 <= average_traffic && average_traffic < 8) && (1 <= average_prohibited_items && average_prohibited_items < 2)){
 	    airportSecurityFactors.setState(airportSecurityFactors.getModerateRiskState());
-	    System.out.println("Change to moderate risk state-3");
+	    MyLogger.writeMessage("State Changed to ModerateRiskState", MyLogger.DebugLevel.IN_RUN);	    
 	    airportSecurityFactors.setCurrentState("moderate_risk_state");
 	}
     }
