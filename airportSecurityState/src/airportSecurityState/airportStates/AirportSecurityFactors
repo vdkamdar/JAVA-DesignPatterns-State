@@ -1,6 +1,7 @@
 package airportSecurityState.airportStates;
 
 import airportSecurityState.util.MyLogger;
+import airportSecurityState.util.CalculateAverage;
 
 public class AirportSecurityFactors {
     private AirportStateI low_risk_state = null;
@@ -16,14 +17,17 @@ public class AirportSecurityFactors {
     private float average_traffic = 0;
     private float average_prohibited_items = 0;
 
+    private CalculateAverage calculateAverage;
+
     public AirportSecurityFactors(int number_of_travellers, int number_of_days, int number_of_prohibited_items){
 	low_risk_state = new LowRiskState(this);
 	moderate_risk_state = new ModerateRiskState(this);
 	high_risk_state = new HighRiskState(this);
 	state = low_risk_state;
-	MyLogger.writeMessage("AirportSecurityFactors instance is created", MyLogger.DebugLevel.CONSTRUCTOR);	
+	calculateAverage = new CalculateAverage();
+	MyLogger.writeMessage("AirportSecurityFactors instance is created", MyLogger.DebugLevel.CONSTRUCTOR);
     }
-
+    
     public String getCurrentState(){
 	return current_state;
     }
@@ -38,16 +42,6 @@ public class AirportSecurityFactors {
 
     public AirportStateI getHighRiskState(){
 	return high_risk_state;
-    }
-
-    public float getAverageTraffic(){
-	average_traffic = (float)number_of_travellers / number_of_days;
-	return average_traffic;
-    }
-
-    public float getAverageProhibitedItems(){
-	average_prohibited_items = (float)number_of_prohibited_items / number_of_days;
-	return average_prohibited_items;
     }
 
     public void setState(AirportStateI state){
@@ -68,6 +62,16 @@ public class AirportSecurityFactors {
 
     public void setNumberOfTravellers(int number_of_travellers_in){
 	number_of_travellers = number_of_travellers_in;
+    }
+
+    public float getAverageTraffic(){
+	average_traffic = calculateAverage.getAverageTraffic(number_of_travellers, number_of_days);
+	return average_traffic;
+    }
+
+    public float getAverageProhibitedItems(){
+	average_prohibited_items = calculateAverage.getAverageProhibitedItems(number_of_prohibited_items, number_of_days);
+	return average_prohibited_items;
     }
     
     public void tightenOrLoosenSecurity(){
