@@ -10,12 +10,12 @@ ant -buildfile src/build.xml all
 -----------------------------------------------------------------------
 ## To run by specifying arguments from command line 
 ## We will use this to run your code
-ant -buildfile src/build.xml run -Darg0=FIRST -Darg1=SECOND -Darg2=SECOND
+ant -buildfile src/build.xml run -Darg0=FIRST -Darg1=SECOND -Darg2=THIRD
 
 -----------------------------------------------------------------------
 
 ## To create tarball for submission
-ant -buildfile src/build.xml tarzip or tar -zcvf vidhi_kamdar_assign_2.tar.gz vidhi_kamdar_assign_2
+ant -buildfile src/build.xml tarzip or tar -zcvf vidhi_kamdar_assign_3.tar.gz vidhi_kamdar_assign_3
 
 -----------------------------------------------------------------------
 
@@ -26,16 +26,22 @@ official form that I have cheated and that this form will be stored in
 my official university record. I also understand that I will receive a
 grade of 0 for the involved assignment for my first offense and that I
 will receive a grade of F for the course for any additional
-offense.”
+offense."
 
-[Date: 03/10/2017]
+[Date: 10/17/2017]
 
 -----------------------------------------------------------------------
 Brief on implementation of State Pattern:
-->
+->Driver class initializes instance of Context class. For every line of the input file, the context class will call tightenOrLoosenSecurity method on the current state
+depending on the average traffic and average prohibited items. This calculation is carried out by CalculateAverage class. Depending on the current state, the
+operation ids are selected and added to the results arraylist.
 
 Provide justification for Data Structures used in this assignment in
-term of Big O complexity (time and/or space)
+terms of Big O complexity (time and/or space)
+
+ArrayList<String[]> for storing the list of travellers and their respective information:
+The number of travellers may keep changing(ArrayList is suitable) but the fields may be fixed(String[] is suitable). For example, for this assignment: Day, TOD, Airline, ProhibitedItems are fixed.
+getElement:O(1); Search:O(n) under normal circumstances
 
 ArrayList<String> for storing results:
 ArrayList is not fixed size, hence we can modify it more frequently when needed.Storing results needs constant change in size of the list according to the test cases.Even if we set an initial size, we can still modify the size
@@ -67,8 +73,11 @@ https://www.mkyong.com/java/java-convert-string-to-int/
 https://teamtreehouse.com/community/bad-source-file
 https://stackoverflow.com/questions/3753869/how-do-i-concatenate-two-strings-in-java
 https://stackoverflow.com/questions/16069106/how-to-compare-two-java-objects
+https://www.tutorialspoint.com/java/java_string_tolowercase.htm
+https://stackoverflow.com/questions/14206768/how-to-check-if-a-string-is-numeric
 
 4. State pattern examples
+Head First Design Patterns - ORA
 https://github.com/bethrobson/Head-First-Design-Patterns/blob/master/src/headfirst/designpatterns/proxy/gumballmonitor/GumballMachine.java
 https://dzone.com/articles/design-patterns-state
 https://www.journaldev.com/1751/state-design-pattern-java
@@ -86,3 +95,11 @@ FileNotFound Exception: https://www.tutorialspoint.com/java/java_exceptions.htm
 
 7. Enums
 http://tutorials.jenkov.com/java/enums.html
+https://stackoverflow.com/questions/27089438/complexity-of-enum-values
+
+8.Exceptions
+https://stackoverflow.com/questions/6822968/print-the-stack-trace-of-an-exception
+https://www.tutorialspoint.com/java/java_exceptions.htm
+https://beginnersbook.com/2013/04/throw-in-java/
+https://stackoverflow.com/questions/8052941/throwing-a-custom-numberformatexception-in-java
+https://stackoverflow.com/questions/6456219/java-checking-if-parseint-throws-exception
