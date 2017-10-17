@@ -32,6 +32,7 @@ public class FileProcessor{
 	    return line;
 	}
 	catch(Exception e){
+	    e.printStackTrace();
 	    closeInScanner();
 	    throw e;
 	}
