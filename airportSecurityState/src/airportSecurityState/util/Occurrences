@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import airportSecurityState.util.MyLogger;
 
-
 public class Occurrences{
 
-    int current_day;
-    int number_of_days;
-    int number_of_travellers;
-    int number_of_prohibited_items;
+    private int current_day;
+    private int number_of_days;
+    private int number_of_travellers;
+    private int number_of_prohibited_items;
+
+    private static enum list_of_prohibited_items{nailcutter, blade, knife, gun};
 
     public Occurrences(){
 	current_day = 0;
@@ -25,11 +26,13 @@ public class Occurrences{
 	    current_day = Integer.parseInt(traveller_information[0]);
 	    number_of_days++;
 	}
-	
-	if(traveller_information[3].equals("Gun") || traveller_information[3].equals("Nailcutter") || traveller_information[3].equals("Blade") || traveller_information[3].equals("Knife")){
-	    number_of_prohibited_items++;
-	}
 
+	for (list_of_prohibited_items items : list_of_prohibited_items.values()) {
+	    if (items.name().equals(traveller_information[3].toLowerCase())){
+		number_of_prohibited_items++;
+            }
+        }
+	
 	number_of_travellers++;
 
 	MyLogger.writeMessage(("Days: "+number_of_days+"; ProhibitedItems: "+number_of_prohibited_items+"; Travellers: "+number_of_travellers), MyLogger.DebugLevel.FROM_RESULTS);
