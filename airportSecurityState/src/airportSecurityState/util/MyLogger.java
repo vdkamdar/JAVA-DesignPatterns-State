@@ -4,9 +4,9 @@ public class MyLogger{
 
     /*DEBUG_VALUE=4 [Print to stdout everytime a constructor is called]
       DEBUG_VALUE=3 [Print to stdout everytime the state is changed]
-      DEBUG_VALUE=2 [FIXME: add your own scheme here]
-      DEBUG_VALUE=1 [FIXME: add your own scheme here]
-      DEBUG_VALUE=0 [No output should be printed from the application to stdout. It is ok to write to the output file though" ]
+      DEBUG_VALUE=2 [Print to stdout the current state of the airport after reading each line from the input file]
+      DEBUG_VALUE=1 [Print to stdout number of days, prohibited_items and travellers after reading each line from the input file]
+      DEBUG_VALUE=0 [No output should be printed from the application to stdout. It is ok to write to the output file though]
     */
 
     public static enum DebugLevel {RELEASE, FROM_RESULTS, IN_RESULTS, IN_RUN, CONSTRUCTOR};
