@@ -1,3 +1,5 @@
+# JAVA-DesignPatterns-State #
+
 Assuming you are in the directory containing this README:
 
 ## To clean:
@@ -48,58 +50,3 @@ ArrayList is not fixed size, hence we can modify it more frequently when needed.
 Big O Time complexity:O(n) under normal circumstances
 
 -----------------------------------------------------------------------
-
-Provide list of citations (urls, etc.) from where you have taken/referred code
-(if any).
-
-1. Split strings based on delimiter:
-https://stackoverflow.com/questions/7787385/split-java-string-into-two-string-using-delimiter
-https://stackoverflow.com/questions/8547940/splitting-strings-based-on-a-delimiter
-https://beginnersbook.com/2013/12/java-string-split-method-example/
-
-2. Usage of ArrayList
-https://stackoverflow.com/questions/1921181/java-arraylist-of-string-arrays
-https://stackoverflow.com/questions/3920602/get-specific-arraylist-item
-https://stackoverflow.com/questions/14973566/find-the-index-in-an-arraylist-that-contains-a-string
-https://stackoverflow.com/questions/3943582/use-of-contains-in-java-arrayliststring
-
-3. Usage of Array
-http://www.geeksforgeeks.org/count-number-of-occurrences-or-frequency-in-a-sorted-array/
-https://stackoverflow.com/questions/26255862/how-to-check-if-an-array-in-an-arraylist-contains-a-certain-value
-
-3. Miscelleneous
-https://stackoverflow.com/questions/28327438/java-generics-compilation-error-incompatible-types-item1-cannot-be-converted
-https://www.mkyong.com/java/java-convert-string-to-int/
-https://teamtreehouse.com/community/bad-source-file
-https://stackoverflow.com/questions/3753869/how-do-i-concatenate-two-strings-in-java
-https://stackoverflow.com/questions/16069106/how-to-compare-two-java-objects
-https://www.tutorialspoint.com/java/java_string_tolowercase.htm
-https://stackoverflow.com/questions/14206768/how-to-check-if-a-string-is-numeric
-
-4. State pattern examples
-Head First Design Patterns - ORA
-https://github.com/bethrobson/Head-First-Design-Patterns/blob/master/src/headfirst/designpatterns/proxy/gumballmonitor/GumballMachine.java
-https://dzone.com/articles/design-patterns-state
-https://www.journaldev.com/1751/state-design-pattern-java
-https://sourcemaking.com/design_patterns/state/java/5
-
-5. Performance and Time Complexities
-http://bigocheatsheet.com/
-https://stackoverflow.com/questions/14670770/binary-search-tree-over-avl-tree
-http://infotechgems.blogspot.com/2011/11/java-collections-performance-time.html
-
-6. File I/O 
-Read file line by line: Referred to: https://rosettacode.org/wiki/Read_a_file_line_by_line#Java
-Analysed different methods to write to file: http://www.baeldung.com/java-write-to-file
-FileNotFound Exception: https://www.tutorialspoint.com/java/java_exceptions.htm
-
-7. Enums
-http://tutorials.jenkov.com/java/enums.html
-https://stackoverflow.com/questions/27089438/complexity-of-enum-values
-
-8.Exceptions
-https://stackoverflow.com/questions/6822968/print-the-stack-trace-of-an-exception
-https://www.tutorialspoint.com/java/java_exceptions.htm
-https://beginnersbook.com/2013/04/throw-in-java/
-https://stackoverflow.com/questions/8052941/throwing-a-custom-numberformatexception-in-java
-https://stackoverflow.com/questions/6456219/java-checking-if-parseint-throws-exception
